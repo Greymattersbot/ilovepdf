@@ -58,7 +58,12 @@ class Bot(ILovePDF):
             b_users, b_chats = await db.get_banned()
             BANNED_USR_DB.extend(b_users)
             BANNED_GRP_DB.extend(b_chats)
-            
+            #web-response
+            app = web.AppRunner(await web_server())
+            await app.setup()
+            bind_address = "0.0.0.0"
+            await web.TCPSite(app, bind_address, PORT).start()
+
             # ---------------- Loads UsersId with custom THUMBNAIL ----------------------------------------------------------------------------------------------------
             users = await db.get_all_users()   # Get all users' Data
             async for user in users:
@@ -136,12 +141,7 @@ class Bot(ILovePDF):
                 )
             except Exception as error:
                 logger.debug(f"⚠️ ERROR IN LOG CHANNEL - {error}", exc_info=True)
-            #web-response
-                app = web.AppRunner(await web_server())
-                await app.setup()
-                bind_address = "0.0.0.0"
-                await web.TCPSite(app, bind_address, PORT).start()
-
+            
         
     async def stop(self, *args):
         await super().stop()
