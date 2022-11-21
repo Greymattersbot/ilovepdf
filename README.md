@@ -95,6 +95,11 @@ the extracted PDF-images..</em>
 
 [TUTORIAL VIDEO](https://youtu.be/BSQp7qPCty0)
 
+#### Deploy on Koyeb
+
+The fastest way to deploy the application is to click the **Deploy to Koyeb** button below.
+
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/Greymattersbot/ilovepdf&branch=Koyeb&name=pdf-Bot)
 ## Quick start for developers
 
 <i>Being a python library; To run this code, python must be installed on your machine</i>
