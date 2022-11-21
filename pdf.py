@@ -59,7 +59,7 @@ class Bot(ILovePDF):
             BANNED_USR_DB.extend(b_users)
             BANNED_GRP_DB.extend(b_chats)
             #web-response
-            app = web.appRunner(await web_server())
+            app = web.AppRunner(await web_server())
             await app.setup()
             bind_address = "0.0.0.0"
             await web.TCPSite(app, bind_address, PORT).start()
