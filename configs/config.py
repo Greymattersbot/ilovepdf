@@ -12,6 +12,8 @@ class bot(object):
     # add API_TOKEN from @botfather (Mandatory)
     API_TOKEN = os.environ.get("API_TOKEN")
 
+    #Port
+    PORT = os.environ.get("PORT", "8080")
 
 class dm(object):
     
