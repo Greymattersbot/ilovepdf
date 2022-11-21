@@ -22,6 +22,8 @@ from lang import __users__
 from pyromod import listen
 from configs.log import log
 from plugins.util import translate
+from aiohttp import web
+from plugins import web_server
 from pyrogram import Client as ILovePDF
 from telebot.async_telebot import AsyncTeleBot
 from configs.config import bot, settings, images
@@ -134,6 +136,12 @@ class Bot(ILovePDF):
                 )
             except Exception as error:
                 logger.debug(f"⚠️ ERROR IN LOG CHANNEL - {error}", exc_info=True)
+            #web-response
+                app = web.AppRunner(await web_server())
+                await app.setup()
+                bind_address = "0.0.0.0"
+                await web.TCPSite(app, bind_address, PORT).start()
+
         
     async def stop(self, *args):
         await super().stop()
