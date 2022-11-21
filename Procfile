@@ -1,1 +1,1 @@
-worker: python3 pdf.py
+web: python3 pdf.py
